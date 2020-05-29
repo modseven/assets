@@ -174,9 +174,16 @@ class Assets
 
         // If minification is not enabled, we return one tag for each file
         $tags = '';
+
+        // Determine render function
+        $fn = 'style';
+        if ($type === 'js') {
+            $fn = 'script';
+        }
+
         foreach ($sorted as $file)
         {
-            $tags .= HTML::style($path . $file . '.' . $type) . PHP_EOL;
+            $tags .= HTML::$fn($path . $file . '.' . $type) . PHP_EOL;
         }
 
         return $tags;
