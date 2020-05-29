@@ -7,11 +7,11 @@
 Copy the file(s) from vendor/modseven/assets/conf/ to your application/conf folder. Modify them as needed.
 The following configuration options are available for each type (js/css)
 
-|    Option      | Description                                                              | Default Value             |
-|----------------|--------------------------------------------------------------------------|---------------------------|
-|  type_minify   | IF true, then the files will be minified using matthiasmullie's minifier | FALSE                     |
-|  type_path     | This is the directory where your source files are located                | public/<type>             |
-|  type_minified | Location to the minified file, minfied code will be stored there.        | public/app.<type>         |
+|    Option      | Description                                                                             | Default Value             |
+|----------------|-----------------------------------------------------------------------------------------|---------------------------|
+|  type_minify   | IF true, then the files will be minified using matthiasmullie's minifier                | FALSE                     |
+|  type_path     | This is the directory where your source files are located (relative to PUBPATH)         | <type>                    |
+|  type_minified | Location to the minified file, minfied code will be stored there. (relative to PUBPATH) | public/app.<type>         |
 |  lifetime      | Lifetime for minified files, set high value on production servers here   | 86400 (24 Hours)          |
 
 ##Usage

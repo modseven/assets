@@ -130,19 +130,20 @@ class Assets
         {
             // Get the path to the minification file
             $minificationFile = $this->_configuration->get($type . '_minified');
+            $fullPath = PUBPATH . $minificationFile;
 
             // Minified files only get rebuild every 24 Hours, to ensure higher performance, this is ofc even faster than caching
             // But if source files are modified, this one does not get rebuilt so make sure you turn minification off on development systems
-            if (is_readable($minificationFile) && (time()-filemtime($minificationFile)) < $this->_configuration->get('lifetime', 86400))
+            if (is_readable($fullPath) && (time()-filemtime($fullPath)) < $this->_configuration->get('lifetime', 86400))
             {
-                return HTML::style($minificationFile);
+                //return HTML::style($minificationFile);
             }
 
             // If the minified version is to old let's check if that file is writable
-            if (!is_writable($minificationFile) || (!file_exists($minificationFile) && !touch($minificationFile)))
+            if (!is_writable($fullPath) || (!file_exists($fullPath) && !touch($fullPath)))
             {
                 throw new Exception('Target File for minified assets ":file" must be writeable.', [
-                    ':file' => $minificationFile
+                    ':file' => $fullPath
                 ]);
             }
         }
@@ -153,7 +154,7 @@ class Assets
         // Now we sort them by dependency
         $sorted = [];
         foreach ($files as $element) {
-            $this->sort($element, $files, $sorted, ($doMinify ? $path : ''), ($doMinify ? ('.' . $type) : ''));
+            $this->sort($element, $files, $sorted, ($doMinify ? PUBPATH. $path : ''), ($doMinify ? ('.' . $type) : ''));
         }
 
         // If minification is enabled we now minify those files
@@ -175,7 +176,7 @@ class Assets
         $tags = '';
         foreach ($sorted as $file)
         {
-            $tags .= HTML::style($file . '.' . $type) . PHP_EOL;
+            $tags .= HTML::style($path . $file . '.' . $type) . PHP_EOL;
         }
 
         return $tags;
