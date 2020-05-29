@@ -1,0 +1,33 @@
+{
+  "name": "modseven/assets",
+  "description": "Asset Module for Modseven",
+  "license": "BSD-3-Clause",
+  "keywords": [
+    "kohana",
+    "kohana-php7",
+    "koseven",
+    "modseven",
+    "database",
+    "kohana assets",
+    "modseven assets"
+  ],
+  "authors": [
+    {
+      "name": "Tobias Oitzinger",
+      "role": "developer"
+    }
+  ],
+  "require": {
+    "modseven/core": "*"
+  },
+  "autoload": {
+    "psr-4": {
+      "Modseven\\Assets\\": "classes"
+    }
+  },
+  "extra" : {
+    "modseven" : true
+  },
+  "minimum-stability": "dev",
+  "prefer-stable": true
+}
