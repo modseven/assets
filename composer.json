@@ -18,7 +18,9 @@
     }
   ],
   "require": {
-    "modseven/core": "*"
+    "modseven/core": "*",
+    "matthiasmullie/minify": "^1.3",
+    "ext-mbstring": "*"
   },
   "autoload": {
     "psr-4": {
