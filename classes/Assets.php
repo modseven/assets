@@ -81,7 +81,7 @@ class Assets
      */
     public function addJS(string $file, array $dependencies = []) : void
     {
-        $this->_css[$file] = ['file' => $file, 'dependencies' => $dependencies, 'sorted' => false];
+        $this->_js[$file] = ['file' => $file, 'dependencies' => $dependencies, 'sorted' => false];
     }
 
     /**
